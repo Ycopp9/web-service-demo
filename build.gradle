@@ -1,0 +1,26 @@
+plugins { // (1)
+    id 'org.springframework.boot' version '2.4.1' // RELEASE 삭제
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE' // 스프링부트의 의존성을 관리해주는 플러그인
+    id 'java'
+}
+
+group 'com.like.book'
+version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
+sourceCompatibility = 1.8
+
+repositories {
+    //각종 의존성을 어떤 원격 저장소에서 받을지, jcenter은 서비스 종료
+    mavenCentral()
+}
+
+// for Junit 5
+test { // (2)
+    useJUnitPlatform()
+}
+
+dependencies {
+    //(3)
+    implementation('org.springframework.boot:spring-boot-starter-web')
+
+    testImplementation("org.springframework.security:spring-security-test") // 권한 관련
+}
